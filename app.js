@@ -35,7 +35,7 @@ const StorageCtrl = (function () {
                   }
               });
 
-              localStorage.setItem('items',items);
+              localStorage.setItem('items',JSON.stringify(items));
             },
             deleteItemStorage: function (id) {
                 let items = JSON.parse(localStorage.getItem('items'));
@@ -45,7 +45,7 @@ const StorageCtrl = (function () {
                     }                    
                 });
                 console.log(items);
-                //localStorage.setItem('items',items);
+                localStorage.setItem('items',JSON.stringify(items));
             },
             clearFromStorage: function () {
                 localStorage.removeItem('items');
@@ -359,6 +359,7 @@ const App = (function () {
        const totalCalories = ItemCtrl.getTotalCalories();
        UICtrl.addTotalCalories(totalCalories);
        StorageCtrl.deleteItemStorage(currentItem.id);
+       console.log(currentItem.id);
        UICtrl.clearFields();
        UICtrl.clearEditState();
 
